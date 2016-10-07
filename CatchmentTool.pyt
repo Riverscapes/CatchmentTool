@@ -58,7 +58,7 @@ class DelineateCatchments(object):
             direction='Input')
 
         param2 = arcpy.Parameter(
-            displayName='Stream network polyline feature class with branch ID',
+            displayName='Stream network polyline feature class dissolved by branch ID',
             name='strm_input',
             datatype='DEFeatureClass',
             parameterType='Required',

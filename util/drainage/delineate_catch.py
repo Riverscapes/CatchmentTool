@@ -36,7 +36,7 @@ def check_req(strm_input, elev_input):
     if input_strm_sr.type != "Projected":
         arcpy.AddMessage("Input stream network feature class has a geographic spatial reference. "
                          "Please change to a projected spatial reference.")
-    if input_elev_sr != "Projected":
+    if input_elev_sr.type != "Projected":
         arcpy.AddMessage("Input elevation raster dataset has a geographic spatial reference. "
                          "Please change to a projected spatial reference.")
 
