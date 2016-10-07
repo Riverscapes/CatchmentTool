@@ -11,6 +11,7 @@
 # dependencies: ESRI arcpy module, Spatial Analyst extension, custom functions
 
 import arcpy
+import sys
 import os.path
 import datetime
 from util.metadata import Metadata
@@ -19,7 +20,36 @@ import dem_rcnd as dR
 import endpoint as end
 from arcpy.sa import *
 
+def check_req(strm_input, elev_input):
+    # check for M and Z-enabled geometry and projected spatial reference
+    input_hasM = arcpy.Describe(strm_input).hasM
+    input_hasZ = arcpy.Describe(strm_input).hasZ
+    input_strm_sr = arcpy.Describe(strm_input).spatialReference
+    input_elev_sr = arcpy.Describe(elev_input).spatialReference
+
+    if input_hasM == True:
+        arcpy.AddMessage("Geometry of the input stream network feature class is M-value enabled. "
+                         "Please disable the M-value.")
+    if input_hasZ == True:
+        arcpy.AddMessage("Geometry of the input stream network feature class is Z-value enabled. "
+                         "Please disable the Z-value.")
+    if input_strm_sr.type != "Projected":
+        arcpy.AddMessage("Input stream network feature class has a geographic spatial reference. "
+                         "Please change to a projected spatial reference.")
+    if input_elev_sr != "Projected":
+        arcpy.AddMessage("Input elevation raster dataset has a geographic spatial reference. "
+                         "Please change to a projected spatial reference.")
+
+    if input_hasM == True \
+            or input_hasZ == True \
+            or input_strm_sr.type != "Projected" \
+            or input_elev_sr.type != "Projected":
+        sys.exit(0)
+
 def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream_bool):
+    # check data characteristics of input stream network for tool requirements
+    check_req(strm_input, elev_input)
+
     # set environment parameters
     arcpy.AddMessage("Setting processing environment parameters...")
     arcpy.CheckOutExtension("Spatial")
