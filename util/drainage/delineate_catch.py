@@ -46,6 +46,7 @@ def check_req(strm_input, elev_input):
             or input_elev_sr.type != "Projected":
         sys.exit(0)
 
+
 def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream_bool):
     # check data characteristics of input stream network for tool requirements
     check_req(strm_input, elev_input)
@@ -64,7 +65,7 @@ def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream
     cellSize = float(cellSizeResult.getOutput(0))
     snap_dist = cellSize * 2
 
-    # Metadata
+    # metadata
     mWriter = Metadata.MetadataWriter("Delineate Catchments", "0.3")
     mWriter.createRun()
     # input parameters for metadata file
@@ -75,6 +76,15 @@ def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream
     mWriter.currentRun.addParameter("Bankfull (or stream area) polygon feature class", bf_input)
     mWriter.currentRun.addParameter("Output file geodatabase", outFGB)
     mWriter.currentRun.addParameter("Upstream (i.e. overlapping) catchments?", upstream_bool)
+
+    # check segmented stream network for LineOID field, and add if it's missing
+    seg_oid = arcpy.Describe(strm_seg).OIDFieldName
+    list_field = arcpy.ListFields(strm_seg, "LineOID")
+    strm_seg_lyr = "strm_seg_lyr"
+    arcpy.MakeFeatureLayer_management(strm_seg, strm_seg_lyr)
+    if len(list_field) == 0:
+        arcpy.AddField_management(strm_seg_lyr, "LineOID", "LONG")
+        arcpy.CalculateField_management(strm_seg_lyr, "LineOID", "!" + seg_oid +"!", "PYTHON_9.3")
 
     # convert stream network to raster
     arcpy.AddMessage("Converting stream network to raster format...")
@@ -150,7 +160,7 @@ def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream
     arcpy.AddMessage("...selecting sliver polygons.")
     arcpy.SelectLayerByAttribute_management("catch_ply_lyr", "NEW_SELECTION", """"sqkm" <= 0.0001""")
     arcpy.AddMessage("...merging sliver polygons with largest neighbors.")
-    arcpy.Eliminate_management("catch_ply_lyr", "in_memory\\catch_eliminate", "AREA")
+    arcpy.Eliminate_management("catch_ply_lyr", "in_memory\\catch_eliminate", "LENGTH")
     arcpy.MakeFeatureLayer_management("in_memory\\catch_eliminate", "catch_elim_lyr")
     arcpy.AddMessage("...dissolving catchment polygons based on LineOID value.")
     arcpy.Dissolve_management("catch_elim_lyr", outFGB + "\\catch_final", "LineOID")
