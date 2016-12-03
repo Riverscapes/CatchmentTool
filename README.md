@@ -56,7 +56,7 @@ This tool was recently renamed, and was originally an ESRI Python toolbox called
 ### ArcGIS Geoprocessing Requirements
 * We recommend this tool be run with 64-bit python geoprocessing enabled.
 * All inputs, including vector and raster data, are assumed to be in the same coordinate system and projection. UTM or North America Albers Equal Area projections are recommended.
-* Remove M and Z values from the shape field of the stream network feature class.
+* Remove M and Z values from the shape field of the input stream network feature class.
 
 ## Recommended Processing Workflow
 ### Data Preprocessing
@@ -106,6 +106,11 @@ segments (and their associated pour point) that will not spatially coincide prec
 that are too small, and do not represent the full upstream drainage area.  Currently the Catchment Tool attempts to recondition the DEM by "burning in" the linear stream network and open stream area polygons
 so that the DEM more closely conforms to the stream network.  Catchment area polygons with an area value below an arbitrarily chosen threshold
 are tagged with an error code, to inform the user that these catchment areas may be suspect.
+
+_Typical problem areas_:
+  * Main stems / wide flood plains
+  * Areas with dense stream networks
+  
 * **Long run time**: Selecting the upstream catchment option results in drastically longer processing times.
 
 ## Acknowledgements
