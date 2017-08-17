@@ -1,0 +1,27 @@
+# Site settings
+title: Catchment Tool
+description: > # this means to ignore newlines until "baseurl:"
+  Catchment Tool, an ArcGIS Python toolobx, was developed for delineating stream network catchment areas.
+url: https://riverscapes.github.io
+baseurl: "/CatchmentTool"
+port: 4001
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
+
+layouts_dir:  src/_layouts
+includes_dir: src/_includes
+
+exclude:
+  - src
+  - LICENSE
+  - README.md
+  - _config.yml
