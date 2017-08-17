@@ -31,11 +31,11 @@ Although similar tools are available, such as ESRI's ArcHydro framework
  (Maidment, 2002) and the Multi-Watershed Delineation Tool (Chinnayakanahalli, K. et al., 2006), 
  these tools do not specifically allow overlapping, upstream catchment area delineation.
  
- #### Citations
+#### Citations
 * Chinnayakanahalli, K., C. Kroeber, R. Hill, J. Olson, D. G. Tarboton and C. Hawkins, (2006). Manual for Regional Watershed Analysis Using the Multi-Watershed Delineation Tool. Utah State University. 
 
 * Maidment, D. R. (2002). Arc Hydro: GIS for water resources (Vol. 1). ESRI, Inc.
  
- ### Support
+### Support
  
  The **Catchment Tool** is actively developed and maintained by [South Fork Research, Inc.](https://southforkresearch.org).
