@@ -7,9 +7,9 @@
 #              South Fork Research, Inc. (SFR)                                #
 #              Seattle, Washington                                            #
 #                                                                             #
-# Published:   2016-Oct-4                                                     #
-# Version:     1.0                                                            #
-# Copyright:   (c) SFR 2016                                                   #
+# Published:   2017-Oct-24                                                     #
+# Version:     1.1                                                            #
+# Copyright:   (c) SFR 2017                                                   #
 # License:     Simple BSD                                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #!/usr/bin/env python
@@ -122,11 +122,3 @@ class DelineateCatchments(object):
                 parameters[6].valueAsText)
 
         return
-
-# def main():
-#     tbx = Toolbox()
-#     tool = DelineateCatchments()
-#     tool.execute(tool.getParameterInfo(), None)
-#
-# if __name__ == "__main__":
-#     main()

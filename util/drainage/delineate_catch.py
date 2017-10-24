@@ -167,15 +167,22 @@ def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream
     arcpy.MakeFeatureLayer_management(outFGB + "\\catch_final", "catch_final_lyr")
     arcpy.Delete_management(outFGB + "\\catch_ply")
 
-    # find errors. Error codes: 1 = improper pour point placement, 2 = duplicate catchment polygons
+    # find errors
     arcpy.AddMessage("Adding error_code field...") ### TEMP
     arcpy.AddField_management("catch_final_lyr", "error_code", "SHORT")
-    # threshold for catchment polygons that are "too small" is currently arbitrary
+    # error_code = 1; polygons are "too small"
     arcpy.AddField_management("catch_final_lyr", "sqkm", "DOUBLE")
     arcpy.CalculateField_management("catch_final_lyr", "sqkm", "!SHAPE.AREA@SQUAREKILOMETERS!", "PYTHON_9.3")
     arcpy.SelectLayerByAttribute_management("catch_final_lyr", "NEW_SELECTION", """"sqkm" <= 0.02 """)
     arcpy.CalculateField_management("catch_final_lyr", "error_code", "1", "PYTHON_9.3")
     arcpy.SelectLayerByAttribute_management("catch_final_lyr", "CLEAR_SELECTION")
+    # error_code = 2; polygons are "too thin"
+    arcpy.AddField_management("catch_final_lyr", "thinness", "DOUBLE")
+    arcpy.CalculateField_management("catch_final_lyr", "thinness", """(4*3.14*!SHAPE.AREA!)/(math.pow(!SHAPE.LENGTH!,2))""", "PYTHON_9.3")
+    arcpy.SelectLayerByAttribute_management("catch_final_lyr", "NEW_SELECTION", """"thinness" < 0.90""")
+    arcpy.CalculateField_management("catch_final_lyr", "error_code", "2", "PYTHON_9.3")
+    arcpy.SelectLayerByAttribute_management("catch_final_lyr", "CLEAR_SELECTION")
+    arcpy.DeleteField_management("catch_final_lyr", "thinness")
 
     # Outputs and stop processing clock for metadata
     mWriter.currentRun.addOutput("Output catchment area polygons", outFGB + r"\catch_final")

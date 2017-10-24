@@ -48,7 +48,9 @@ are removed from the shape field.
   * Fields Added:
     * OIDtmp: the original ObjectID value of the point record which served as a pour point for the catchment area.
     * sqkm: the calculated area value of the polygon, in square kilometers.
-    * error: code indicating that an error occurred with the delineation process. 1 = improper placement of pour point
+    * error_code: code indicating that an error occurred with the delineation process, most likely due to sub-optimal pour point placement. 
+      * **1** = catchment area is too small
+      * **2** = catchment area is too thin
 
 * **endpoints**: The point feature class representing stream segment endpoints. These are recommended for use as the pour points feature class input in the Delineate Catchments Tool.
   * Fields Added:

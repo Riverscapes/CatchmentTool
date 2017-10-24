@@ -1,8 +1,13 @@
 ## Releases
-* [Catchment Tool version 1.0](https://github.com/Riverscapes/CatchmentTool/archive/master.zip)
+
+* [Catchment Tool version 1.1](https://github.com/Riverscapes/CatchmentTool/archive/master.zip)
   * Download and unzip the file into a directory, then add the **Catchment Tool** toolbox into ArcGIS using `ArcToolbox > Add Toolbox`.
 
 ### Updates and Release Notes
+10/24/2017
+* New version uploaded, v1.1. 
+* Added additional error check based on calculated "thinness" of each catchment area polygon.
+
 8/6/2017
 * Transferred repository from [SouthForkResearch](https://github.com/SouthForkResearch) to [Riverscapes](https://github.com/Riverscapes)
 
