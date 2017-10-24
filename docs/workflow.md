@@ -59,11 +59,14 @@ are removed from the shape field.
 * **dem_recond**: Reconditioned DEM raster dataset. Provided for context.
 
 ### Known Issues
-* **Sub-optimal pour point placement**: Unless the stream network that was used to generate pour points was directly derived from the DEM, there will inevitably be stream
+**Sub-optimal pour point placement**: Unless the pour points were based on a stream network dataset that was directly derived from the DEM, there will inevitably be stream
 segments (and their associated pour point) that will not spatially coincide precisely with areas of highest flow accumulation in the DEM.  This results in delineated catchments 
-that are too small, and do not represent the full upstream drainage area.  Currently the Catchment Tool attempts to recondition the DEM by "burning in" the linear stream network and open stream area polygons
-so that the DEM more closely conforms to the stream network.  Catchment area polygons with an area value below an arbitrarily chosen threshold
+that are either "too small" or "tool thin", and do not accurately represent the full upstream drainage area. Currently the Catchment Tool attempts to recondition the DEM by "burning in" the linear stream network and open stream area polygons
+so that the DEM more closely conforms to the stream network. Catchment area polygons with an area or thinness value below an arbitrarily chosen threshold
 are tagged with an error code, to inform the user that these catchment areas may be suspect.
+
+**The user should inspect all catchment area polygons that are tagged with an error code to ensure that the polygon
+is in fact an "error". In addition the user is encouraged to manually add error codes to any polygons that appear suspect.**
 
 _Typical problem areas_:
   * Main stems / wide flood plains
