@@ -179,7 +179,7 @@ def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream
     # error_code = 2; polygons are "too thin"
     arcpy.AddField_management("catch_final_lyr", "thinness", "DOUBLE")
     arcpy.CalculateField_management("catch_final_lyr", "thinness", """(4*3.14*!SHAPE.AREA!)/(math.pow(!SHAPE.LENGTH!,2))""", "PYTHON_9.3")
-    arcpy.SelectLayerByAttribute_management("catch_final_lyr", "NEW_SELECTION", """"thinness" < 0.90""")
+    arcpy.SelectLayerByAttribute_management("catch_final_lyr", "NEW_SELECTION", """"thinness" < 0.090""")
     arcpy.CalculateField_management("catch_final_lyr", "error_code", "2", "PYTHON_9.3")
     arcpy.SelectLayerByAttribute_management("catch_final_lyr", "CLEAR_SELECTION")
     arcpy.DeleteField_management("catch_final_lyr", "thinness")
