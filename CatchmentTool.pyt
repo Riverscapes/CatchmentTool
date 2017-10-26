@@ -8,7 +8,7 @@
 #              Seattle, Washington                                            #
 #                                                                             #
 # Published:   2017-Oct-24                                                     #
-# Version:     1.2                                                            #
+# Version:     1.3                                                            #
 # Copyright:   (c) SFR 2017                                                   #
 # License:     Simple BSD                                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

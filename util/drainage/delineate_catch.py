@@ -154,6 +154,8 @@ def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream
 
     # final clean up of upstream catchment polygons
     arcpy.AddMessage("Removing slivers and dissolving watershed polygons...")
+    arcpy.AddMessage("...repairing geometry.")
+    arcpy.RepairGeometry_management("catch_ply_lyr")
     arcpy.AddField_management("catch_ply_lyr", "sqkm", "DOUBLE")
     arcpy.AddMessage("...calculating area of catchment polygons.")
     arcpy.CalculateField_management("catch_ply_lyr", "sqkm", "!SHAPE.AREA@SQUAREKILOMETERS!", "PYTHON_9.3")
