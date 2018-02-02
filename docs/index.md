@@ -1,6 +1,6 @@
 ## Catchment Tool
-- Version: 1.2
-- Revised 10-26-2017
+- Version: 1.4
+- Revised 2-2-2018
 
 ### Summary
 The **Catchment Tool** is an ArcGIS Python toolbox which currently includes one tool: 
