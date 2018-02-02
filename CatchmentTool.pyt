@@ -7,9 +7,9 @@
 #              South Fork Research, Inc. (SFR)                                #
 #              Seattle, Washington                                            #
 #                                                                             #
-# Published:   2017-Oct-24                                                     #
-# Version:     1.3                                                            #
-# Copyright:   (c) SFR 2017                                                   #
+# Published:   2018-Feb-2                                                     #
+# Version:     1.4                                                            #
+# Copyright:   (c) SFR 2018                                                   #
 # License:     Simple BSD                                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #!/usr/bin/env python
