@@ -149,7 +149,7 @@ def main(huc_input, elev_input, strm_input, strm_seg, bf_input, outFGB, upstream
         arcpy.RasterToPolygon_conversion(wshd_ras, "in_memory\\wshd_ply", "NO_SIMPLIFY", "Value")
         arcpy.MakeFeatureLayer_management("in_memory\\wshd_ply", "wshd_ply_lyr")
         arcpy.AddField_management("wshd_ply_lyr", "LineOID", "LONG")
-        arcpy.CalculateField_management("wshd_ply_lyr", "LineOID", "!grid_code!", "PYTHON_9.3")
+        arcpy.CalculateField_management("wshd_ply_lyr", "LineOID", "!gridcode!", "PYTHON_9.3")
         arcpy.Append_management("wshd_ply_lyr", "catch_ply_lyr", "NO_TEST")
 
     # final clean up of upstream catchment polygons
