@@ -1,4 +1,6 @@
-## Releases
+---
+title: Releases
+---
 
 * [Catchment Tool version 1.4](https://github.com/Riverscapes/CatchmentTool/archive/master.zip)
   * Download and unzip the file into a directory, then add the **Catchment Tool** toolbox into ArcGIS using `ArcToolbox > Add Toolbox`.

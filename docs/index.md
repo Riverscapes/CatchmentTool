@@ -1,4 +1,7 @@
-## Catchment Tool
+---
+title: Home
+---
+
 - Version: 1.4
 - Revised 2-2-2018
 

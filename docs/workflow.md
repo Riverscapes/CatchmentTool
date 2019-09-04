@@ -1,4 +1,6 @@
-## Using the Catchment Tool
+---
+title: Using the Catchment Tool
+---
 
 ### Software Requirements
 * Catchment Tools
