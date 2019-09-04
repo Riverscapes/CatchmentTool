@@ -37,7 +37,6 @@ exclude:
   - TEMPLATE
   - Gemfile*
 
-
 # These are theme settings that will be used to turn features on and off
 # They are not part of Jekyll, they are entirely custom.
 settings:
@@ -73,18 +72,6 @@ settings:
       url: http://riverscapes.xyz/rc-data.html
     - title: "RC Help"
       url: http://riverscapes.xyz/rc-help.html
-
-# Redirecting from apps can be tricky so we use a key-value system
-# key: must be in the set [A-Za-z0-9_] (no spaces, no dashes)
-# url: must be relative url, no leading slash.
-# 
-# The url you have to call is: http://siteurl.com/baseurl/?APPKEY=KEY1
-# ---------------------------------------------------------------
-AppRedirects:
-  - key: KEY1
-    url: ThingsA
-  - key: KEY2
-    url: ThingsB/subpageB.html
 
 # Here is how we retrieve the remote theme. Changes to this remote theme will show up after you 
 # push the repo with your /docs folder
